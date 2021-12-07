@@ -1,0 +1,31 @@
+{
+  "name": "Alishiper",
+  "version": "0.1",
+  "description": "Alishiper redirects the url on the aliexpress.com site to display only warehouses in the European Union or in a selectable country.",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/ali-16.png",
+    "24": "images/ali-24.png",
+    "32": "images/ali-32.png",
+    "64": "images/ali-64.png"
+  },
+  "action": {
+    "default_icon": "images/ali-64.png",
+    "default_title": "Set shipping from country on Aliexpress web",
+    "default_popup": "alishiper.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.aliexpress.com/*", "https://www.aliexpress.com/*", "http://aliexpress.com/*", "https://aliexpress.com/*"],
+      "exclude_matches": ["http://*/item/*", "https://*/item/*"],
+      "css": ["alishiper.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
+}
